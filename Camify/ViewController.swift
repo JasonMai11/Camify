@@ -1,8 +1,9 @@
 import UIKit
 import Vision
 import AVFoundation
+import TOCropViewController
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, TOCropViewControllerDelegate {
 
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var imageView: UIImageView!
@@ -13,6 +14,7 @@ class ViewController: UIViewController {
     var imagePicker = UIImagePickerController()
     var capturedImage: UIImage?
     var captureSession = AVCaptureSession()
+    var captureDevice: AVCaptureDevice?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +41,9 @@ class ViewController: UIViewController {
         let captureSession = AVCaptureSession()
         captureSession.sessionPreset = AVCaptureSession.Preset.photo
         
-        guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else { return }
-        guard let input = try? AVCaptureDeviceInput(device: captureDevice) else { return }
+        // Update the reference to the class member
+        captureDevice = AVCaptureDevice.default(for: AVMediaType.video)
+        guard let input = try? AVCaptureDeviceInput(device: captureDevice!) else { return }
         captureSession.addInput(input)
         
         let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -54,11 +57,46 @@ class ViewController: UIViewController {
         captureSession.addOutput(dataOutput)
         
         captureSession.startRunning()
+        
+        // Set imageView content mode to scaleAspectFill
+        imageView.contentMode = .scaleAspectFill
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(focusCamera))
+        cameraView.addGestureRecognizer(tapGestureRecognizer)
+        
+        // Add a tap gesture recognizer to the imageView to present the crop view controller
+        let imageViewTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(presentCropViewController))
+        imageView.addGestureRecognizer(imageViewTapGestureRecognizer)
+        imageView.isUserInteractionEnabled = true // Enable user interaction for imageView
+
     }
+    
+    @objc func focusCamera(gestureRecognizer: UITapGestureRecognizer) {
+        guard let device = captureDevice, device.isFocusModeSupported(.autoFocus) else { return }
+        let tapLocation = gestureRecognizer.location(in: cameraView)
+        let focusPoint = CGPoint(x: tapLocation.x / cameraView.bounds.size.width, y: tapLocation.y / cameraView.bounds.size.height)
+
+        do {
+            try device.lockForConfiguration()
+            device.focusPointOfInterest = focusPoint
+            device.focusMode = AVCaptureDevice.FocusMode.autoFocus
+            device.unlockForConfiguration()
+        } catch {
+            print("Error focusing on the tapped point: \(error)")
+        }
+    }
+    
+    @objc func presentCropViewController() {
+        guard let image = capturedImage else { return }
+        let cropViewController = TOCropViewController(image: image)
+        cropViewController.delegate = self
+        present(cropViewController, animated: true, completion: nil)
+    }
+
 
     @IBAction func capturePhoto() {
         guard let image = capturedImage else { return }
         imageView.image = image
+        imageView.clipsToBounds = true // Clip the imageView to its bounds
         let recognizedText = analyzeText(image: image)
         print("Recognized text: \(recognizedText)")
     }
@@ -74,11 +112,18 @@ class ViewController: UIViewController {
         capturedImage = nil
         imageView.image = nil
     }
+    
+    func cropViewController(_ cropViewController: TOCropViewController, didCropTo image: UIImage, with cropRect: CGRect, angle: Int) {
+        imageView.image = image
+        cropViewController.dismiss(animated: true, completion: nil)
+    }
+
 }
 
     extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             imagePicker.dismiss(animated: true, completion: nil)
+            
             guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
             capturedImage = image
             imageView.image = image

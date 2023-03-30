@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F8DA27887608B168AD25CCD /* Pods_Camify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D6838602736E2A2A4C78468 /* Pods_Camify.framework */; };
 		968047EF29D60CE400230997 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968047EE29D60CE400230997 /* AppDelegate.swift */; };
 		968047F129D60CE400230997 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968047F029D60CE400230997 /* SceneDelegate.swift */; };
 		968047F329D60CE400230997 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968047F229D60CE400230997 /* ViewController.swift */; };
@@ -16,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		481FC74FF92EB63E68625135 /* Pods-Camify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camify.release.xcconfig"; path = "Target Support Files/Pods-Camify/Pods-Camify.release.xcconfig"; sourceTree = "<group>"; };
+		7D6838602736E2A2A4C78468 /* Pods_Camify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		968047EB29D60CE400230997 /* Camify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Camify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		968047EE29D60CE400230997 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		968047F029D60CE400230997 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +27,7 @@
 		968047F729D60CE600230997 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		968047FA29D60CE600230997 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		968047FC29D60CE600230997 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FBE49EE31053AD04B6D4C52F /* Pods-Camify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camify.debug.xcconfig"; path = "Target Support Files/Pods-Camify/Pods-Camify.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F8DA27887608B168AD25CCD /* Pods_Camify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4B10605D3E5341A6E48B142F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FBE49EE31053AD04B6D4C52F /* Pods-Camify.debug.xcconfig */,
+				481FC74FF92EB63E68625135 /* Pods-Camify.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		968047E229D60CE400230997 = {
 			isa = PBXGroup;
 			children = (
 				968047ED29D60CE400230997 /* Camify */,
 				968047EC29D60CE400230997 /* Products */,
+				4B10605D3E5341A6E48B142F /* Pods */,
+				F32231101D9A1C36DC779DF1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +84,14 @@
 			path = Camify;
 			sourceTree = "<group>";
 		};
+		F32231101D9A1C36DC779DF1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7D6838602736E2A2A4C78468 /* Pods_Camify.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +99,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 968047FF29D60CE600230997 /* Build configuration list for PBXNativeTarget "Camify" */;
 			buildPhases = (
+				C41824517F8BD49BEABE552F /* [CP] Check Pods Manifest.lock */,
 				968047E729D60CE400230997 /* Sources */,
 				968047E829D60CE400230997 /* Frameworks */,
 				968047E929D60CE400230997 /* Resources */,
+				3C7A4629D8F547F827F645CF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +159,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C7A4629D8F547F827F645CF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Camify/Pods-Camify-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Camify/Pods-Camify-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Camify/Pods-Camify-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C41824517F8BD49BEABE552F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Camify-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		968047E729D60CE400230997 /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		9680480029D60CE600230997 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBE49EE31053AD04B6D4C52F /* Pods-Camify.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -310,6 +380,7 @@
 		};
 		9680480129D60CE600230997 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 481FC74FF92EB63E68625135 /* Pods-Camify.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
