@@ -67,6 +67,9 @@ class ViewController: UIViewController, TOCropViewControllerDelegate {
         let imageViewTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(presentCropViewController))
         imageView.addGestureRecognizer(imageViewTapGestureRecognizer)
         imageView.isUserInteractionEnabled = true // Enable user interaction for imageView
+        
+        // Set imageView content mode to scaleAspectFit
+        imageView.contentMode = .scaleAspectFit
 
     }
     
