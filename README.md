@@ -15,6 +15,7 @@ An app that analyzes text from your camera and searches the text with google.
 ### App Walkthrough GIF
 
 <img src= "https://im5.ezgif.com/tmp/ezgif-5-8043e186bf.gif" width=250><br>
+https://im5.ezgif.com/tmp/ezgif-5-8043e186bf.gif
 
 ### Notes
 Challenges that encountered while building the app
