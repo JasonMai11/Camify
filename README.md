@@ -20,4 +20,5 @@ An app that analyzes text from your camera and searches the text with google.
 Challenges that encountered while building the app
 
 -  The cropping feature took time as I had to work with the pod TOImageCrop, in addition once I crop an image then I had to show the result of the cropped image.
+-  Text Analyzation. It took a time to understand how Apple's Text Analyzation worked, in addition I had to make sure that it was analyzing text from the cropped image itself.
 ---
