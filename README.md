@@ -14,11 +14,10 @@ An app that analyzes text from your camera and searches the text with google.
 
 ### App Walkthrough GIF
 
-<img src= "http://g.recordit.co/K6AsPf4kqc.gif" width=250><br>
+<img src= "https://im5.ezgif.com/tmp/ezgif-5-8043e186bf.gif" width=250><br>
 
 ### Notes
 Challenges that encountered while building the app
 
 -  The cropping feature took time as I had to work with the pod TOImageCrop, in addition once I crop an image then I had to show the result of the cropped image.
--  
 ---
